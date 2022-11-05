@@ -1,622 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>首页</title>
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"> -->
-<link rel="stylesheet" href="./css/emui.css">
-<!-- <link href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"> -->
-<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
-<script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<script>
-  function max(a, b) {
-    return a > b ? a : b;
-  }
-  function addCard(data) {
-    var count = 0;
-    var html = '';
-    for (var i = 0; i < data['result'].length; i++) {
-      count += 1;
-      if (count % 4 == 1) {
-        html += '<div class="row mt-5 card-deck">';
-      }
-        rate = data['result'][i]['rate'];
-        yellow = [0, 0, 0, 0, 0];
-        // white = [0, 0, 0, 0, 0];
-        for (var j = 0; j < 5; j++) {
-            yellow[j] = (rate >= (2*j+2) ? 2 : max((rate-2*j), 0))*50;
-            console.log(rate, 2*j+2,(rate-2*j), yellow[j]);
-            // white[i] = 100 - yellow[i];
-        }
-        html += '<div class="col">';
-        html += '<div class="card">';
-        html += '<img class="card-img-top" src="'+ data['result'][i]['cover'] + '" alt="Card image cap">';
-        html += '<div class="card-body">';
-        html += '<h4 class="card-title">' + data['result'][i]['title'] + '</h4>';
-        html += '<span class="el-rate__item" style="cursor: auto;"><div class="content"><div  class="el-rate">';
-        for (var j = 0; j < 5; j++) {
-            html += '<span class="el-rate__item" style="cursor: auto;">';
-            html += '<i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);">';
-            html += '<i class="el-rate__decimal el-icon-star-on" style="color: rgb(247, 186, 42); width: ' + yellow[j] + '%;"></i>'; 
-            html += '</i>';
-            html += '</span>';
-        }
-        html += ' <span class="el-rate__text" style="color: rgb(255, 153, 0);">';
-        html += data['result'][i]['rate'];
-        html += '</span>';
-        html += '</div></div></div></div></div>';
-        if (count %4 == 0) {
-          html += '</div>';
-        }
-    }
-    $('#movieslist').html(html);
-}
-</script>
-
-<!-- <script src="https://unpkg.com/element-ui/lib/index.js"></script> -->
-
-    <style type="text/css">
-@import url("https://fonts.googleapis.com/css2?family=Poppins:weight@100;200;300;400;500;600;700;800&display=swap");
-
-body {
-
-    font-family: "Poppins", sans-serif;
-    font-weight: 300
-}
-
-.height {
-    height: 100vh
-}
-
-.search {
-    position: relative;
-    box-shadow: 0 0 40px rgba(51, 51, 51, .1)
-}
-
-.search input {
-    height: 60px;
-    text-indent: 25px;
-    border: 2px solid #d6d4d4
-}
-
-.search input:focus {
-    box-shadow: none;
-    border: 2px solid blue
-}
-
-.search .fa-search {
-    position: absolute;
-    top: 20px;
-    left: 16px
-}
-
-.search button {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    height: 50px;
-    width: 110px;
-    background: #1a8448;
-    border-color: #1a8448
-}
-    </style>
+    <link rel="stylesheet" href="./css/emui.css">
+    <!-- <link href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="js/index.js"></script>
+    <!-- <script src="https://unpkg.com/element-ui/lib/index.js"></script> -->
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-<h1 class="title"> xxx 网站</h1>
-
-<!-- Row Highlight Javascript -->
-<!--<script type="text/javascript">-->
-	<!--window.onload=function(){-->
-	<!--var tfrow = document.getElementById('tfhover').rows.length;-->
-	<!--var tbRow=[];-->
-	<!--for (var i=0;i<tfrow;i++) {-->
-		<!--tbRow[i]=document.getElementById('tfhover').rows[i];-->
-		<!--tbRow[i].onmouseover = function(){-->
-		  <!--this.style.backgroundColor = '#f3f8aa';-->
-		<!--};-->
-		<!--tbRow[i].onmouseout = function() {-->
-		  <!--this.style.backgroundColor = '#ffffff';-->
-		<!--};-->
-	<!--}-->
-<!--};-->
-<!--</script>-->
-
-<!--<script src="//unpkg.com/vue/dist/vue.js"></script>-->
-<!--<script src="//unpkg.com/element-ui@2.15.7/lib/index.js"></script>-->
-
-  <!-- <div class="block"> -->
-
-    <!-- <div class="columns is-mobile is-centered"> -->
-      <div class="container">
-        
-        
+    <h1 class="title"> xxx 网站</h1>
+    <div class="container">
         <div class="col-md-8" style="
     left: 205px;
 ">
           <div class="search"> <i class="fa fa-search"></i> <input type="text" class="form-control" placeholder="搜索电影"> <button class="btn btn-primary">搜索</button> </div>
-      </div>
-  </div>
-
-
-      </div>
-    <!-- </div> -->
-    
-  <div class="container" id="movieslist">
-    <div class="row mt-5 card-deck">
-      <!-- <div class="card-columns"> -->
-        <div class="col">
-          <div class="card">
-            <img class="card-img-top" src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2881176356.webp" alt="Card image cap">
-            <div class="card-body">
-              <h4 class="card-title">Card title</h4>
-              <div class="content">
-                <div  class="el-rate">
-                    <span class="el-rate__item" style="cursor: auto;">
-                        <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);">
-                        </i>
-                    </span>
-                    <span class="el-rate__item" style="cursor: auto;">
-                        <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);"><!----></i>
-                    </span>
-                    <span class="el-rate__item" style="cursor: auto;">
-                        <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);"><!----></i>
-                    </span>
-                    <span class="el-rate__item" style="cursor: auto;">
-                        <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);">
-                            <i class="el-rate__decimal el-icon-star-on" style="color: rgb(247, 186, 42); width: 50%;">
-                            </i>
-                        </i>
-                    </span>
-                    <span class="el-rate__item" style="cursor: auto;">
-                        <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);"><!----></i>
-                    </span>
-                    <span class="el-rate__text" style="color: rgb(255, 153, 0);">
-                        7
-                    </span>
-                </div>
-            </div>
-            </div>
-          </div>
-          </div>
-        
-
-        <div class="col">
-          <div class="card">
-            <img class="card-img-top" src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2881176356.webp" alt="Card image cap">
-            <div class="card-body">
-              <h4 class="card-title">Card title</h4>
-              <div class="content">
-                <div  class="el-rate">
-                    <span class="el-rate__item" style="cursor: auto;">
-                        <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);">
-                        </i>
-                    </span>
-                    <span class="el-rate__item" style="cursor: auto;">
-                        <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);"><!----></i>
-                    </span>
-                    <span class="el-rate__item" style="cursor: auto;">
-                        <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);"><!----></i>
-                    </span>
-                    <span class="el-rate__item" style="cursor: auto;">
-                        <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);">
-                            <i class="el-rate__decimal el-icon-star-on" style="color: rgb(247, 186, 42); width: 50%;">
-                            </i>
-                        </i>
-                    </span>
-                    <span class="el-rate__item" style="cursor: auto;">
-                        <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);"><!----></i>
-                    </span>
-                    <span class="el-rate__text" style="color: rgb(255, 153, 0);">
-                        7
-                    </span>
-                </div>
-            </div>
-            </div>
-          </div>
-          </div>
-        <!-- </div> -->
-
-        <div class="col">
-          <div class="card">
-            <img class="card-img-top" src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2881176356.webp" alt="Card image cap">
-            <div class="card-body">
-              <h4 class="card-title">Card title</h4>
-              <div class="content">
-                <div  class="el-rate">
-                    <span class="el-rate__item" style="cursor: auto;">
-                        <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);">
-                        </i>
-                    </span>
-                    <span class="el-rate__item" style="cursor: auto;">
-                        <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);"><!----></i>
-                    </span>
-                    <span class="el-rate__item" style="cursor: auto;">
-                        <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);"><!----></i>
-                    </span>
-                    <span class="el-rate__item" style="cursor: auto;">
-                        <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);">
-                            <i class="el-rate__decimal el-icon-star-on" style="color: rgb(247, 186, 42); width: 50%;">
-                            </i>
-                        </i>
-                    </span>
-                    <span class="el-rate__item" style="cursor: auto;">
-                        <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);"><!----></i>
-                    </span>
-                    <span class="el-rate__text" style="color: rgb(255, 153, 0);">
-                        7
-                    </span>
-                </div>
-            </div>
-            </div>
-          </div>
-          </div>
-          
-        <div class="col">
-          <div class="card">
-            <img class="card-img-top" src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2881176356.webp" alt="Card image cap">
-            <div class="card-body">
-              <h4 class="card-title">Card title</h4>
-                <div  class="el-rate">
-                    <span class="el-rate__item" style="cursor: auto;">
-                        <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);">
-                        </i>
-                    </span>
-                    <span class="el-rate__item" style="cursor: auto;">
-                        <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);"><!----></i>
-                    </span>
-                    <span class="el-rate__item" style="cursor: auto;">
-                        <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);"><!----></i>
-                    </span>
-                    <span class="el-rate__item" style="cursor: auto;">
-                        <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);">
-                            <i class="el-rate__decimal el-icon-star-on" style="color: rgb(247, 186, 42); width: 50%;">
-                            </i>
-                        </i>
-                    </span>
-                    <span class="el-rate__item" style="cursor: auto;">
-                        <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);"><!----></i>
-                    </span>
-                    <span class="el-rate__text" style="color: rgb(255, 153, 0);">
-                        7
-                    </span>
-                </div>
-            </div>
-          </div>
-          </div>
-      <!-- </div> -->
-
-    <!-- </div> -->
-
-  </div>
-  <div class="row mt-5 card-deck">
-    <!-- <div class="card-columns"> -->
-      <div class="col">
-        <div class="card">
-          <img class="card-img-top" src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2881176356.webp" alt="Card image cap">
-          <div class="card-body">
-            <h4 class="card-title">Card title</h4>
-            <div class="content">
-              <div  class="el-rate">
-                  <span class="el-rate__item" style="cursor: auto;">
-                      <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);">
-                      </i>
-                  </span>
-                  <span class="el-rate__item" style="cursor: auto;">
-                      <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);"><!----></i>
-                  </span>
-                  <span class="el-rate__item" style="cursor: auto;">
-                      <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);"><!----></i>
-                  </span>
-                  <span class="el-rate__item" style="cursor: auto;">
-                      <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);">
-                          <i class="el-rate__decimal el-icon-star-on" style="color: rgb(247, 186, 42); width: 50%;">
-                          </i>
-                      </i>
-                  </span>
-                  <span class="el-rate__item" style="cursor: auto;">
-                      <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);"><!----></i>
-                  </span>
-                  <span class="el-rate__text" style="color: rgb(255, 153, 0);">
-                      7
-                  </span>
-              </div>
-          </div>
-          </div>
         </div>
-        </div>
-      
+    </div>
 
-      <div class="col">
-        <div class="card">
-          <img class="card-img-top" src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2881176356.webp" alt="Card image cap">
-          <div class="card-body">
-            <h4 class="card-title">Card title</h4>
-            <div class="content">
-              <div  class="el-rate">
-                  <span class="el-rate__item" style="cursor: auto;">
-                      <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);">
-                      </i>
-                  </span>
-                  <span class="el-rate__item" style="cursor: auto;">
-                      <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);"><!----></i>
-                  </span>
-                  <span class="el-rate__item" style="cursor: auto;">
-                      <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);"><!----></i>
-                  </span>
-                  <span class="el-rate__item" style="cursor: auto;">
-                      <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);">
-                          <i class="el-rate__decimal el-icon-star-on" style="color: rgb(247, 186, 42); width: 50%;">
-                          </i>
-                      </i>
-                  </span>
-                  <span class="el-rate__item" style="cursor: auto;">
-                      <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);"><!----></i>
-                  </span>
-                  <span class="el-rate__text" style="color: rgb(255, 153, 0);">
-                      7
-                  </span>
-              </div>
-          </div>
-          </div>
-        </div>
-        </div>
-      <!-- </div> -->
-
-      <div class="col">
-        <div class="card">
-          <img class="card-img-top" src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2881176356.webp" alt="Card image cap">
-          <div class="card-body">
-            <h4 class="card-title">Card title</h4>
-            <div class="content">
-              <div  class="el-rate">
-                  <span class="el-rate__item" style="cursor: auto;">
-                      <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);">
-                      </i>
-                  </span>
-                  <span class="el-rate__item" style="cursor: auto;">
-                      <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);"><!----></i>
-                  </span>
-                  <span class="el-rate__item" style="cursor: auto;">
-                      <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);"><!----></i>
-                  </span>
-                  <span class="el-rate__item" style="cursor: auto;">
-                      <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);">
-                          <i class="el-rate__decimal el-icon-star-on" style="color: rgb(247, 186, 42); width: 50%;">
-                          </i>
-                      </i>
-                  </span>
-                  <span class="el-rate__item" style="cursor: auto;">
-                      <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);"><!----></i>
-                  </span>
-                  <span class="el-rate__text" style="color: rgb(255, 153, 0);">
-                      7
-                  </span>
-              </div>
-          </div>
-          </div>
-        </div>
-        </div>
-        
-      <div class="col">
-        <div class="card">
-          <img class="card-img-top" src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2881176356.webp" alt="Card image cap">
-          <div class="card-body">
-            <h4 class="card-title">Card title</h4>
-              <div  class="el-rate">
-                  <span class="el-rate__item" style="cursor: auto;">
-                      <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);">
-                      </i>
-                  </span>
-                  <span class="el-rate__item" style="cursor: auto;">
-                      <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);"><!----></i>
-                  </span>
-                  <span class="el-rate__item" style="cursor: auto;">
-                      <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);"><!----></i>
-                  </span>
-                  <span class="el-rate__item" style="cursor: auto;">
-                      <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);">
-                          <i class="el-rate__decimal el-icon-star-on" style="color: rgb(247, 186, 42); width: 50%;">
-                          </i>
-                      </i>
-                  </span>
-                  <span class="el-rate__item" style="cursor: auto;">
-                      <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);"><!----></i>
-                  </span>
-                  <span class="el-rate__text" style="color: rgb(255, 153, 0);">
-                      7
-                  </span>
-              </div>
-          </div>
-        </div>
-        </div>
-    <!-- </div> -->
-
-  <!-- </div> -->
-
-</div>
-<div class="row mt-5 card-deck">
-  <!-- <div class="card-columns"> -->
-    <div class="col">
-      <div class="card">
-        <img class="card-img-top" src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2881176356.webp" alt="Card image cap">
-        <div class="card-body">
-          <h4 class="card-title">Card title</h4>
-          <div class="content">
-            <div  class="el-rate">
-                <span class="el-rate__item" style="cursor: auto;">
-                    <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);">
-                    </i>
-                </span>
-                <span class="el-rate__item" style="cursor: auto;">
-                    <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);"><!----></i>
-                </span>
-                <span class="el-rate__item" style="cursor: auto;">
-                    <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);"><!----></i>
-                </span>
-                <span class="el-rate__item" style="cursor: auto;">
-                    <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);">
-                        <i class="el-rate__decimal el-icon-star-on" style="color: rgb(247, 186, 42); width: 50%;">
-                        </i>
-                    </i>
-                </span>
-                <span class="el-rate__item" style="cursor: auto;">
-                    <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);"><!----></i>
-                </span>
-                <span class="el-rate__text" style="color: rgb(255, 153, 0);">
-                    7
-                </span>
-            </div>
-        </div>
-        </div>
-      </div>
-      </div>
-    
-
-    <div class="col">
-      <div class="card">
-        <img class="card-img-top" src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2881176356.webp" alt="Card image cap">
-        <div class="card-body">
-          <h4 class="card-title">Card title</h4>
-          <div class="content">
-            <div  class="el-rate">
-                <span class="el-rate__item" style="cursor: auto;">
-                    <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);">
-                    </i>
-                </span>
-                <span class="el-rate__item" style="cursor: auto;">
-                    <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);"><!----></i>
-                </span>
-                <span class="el-rate__item" style="cursor: auto;">
-                    <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);"><!----></i>
-                </span>
-                <span class="el-rate__item" style="cursor: auto;">
-                    <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);">
-                        <i class="el-rate__decimal el-icon-star-on" style="color: rgb(247, 186, 42); width: 50%;">
-                        </i>
-                    </i>
-                </span>
-                <span class="el-rate__item" style="cursor: auto;">
-                    <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);"><!----></i>
-                </span>
-                <span class="el-rate__text" style="color: rgb(255, 153, 0);">
-                    7
-                </span>
-            </div>
-        </div>
-        </div>
-      </div>
-      </div>
-    <!-- </div> -->
-
-    <div class="col">
-      <div class="card">
-        <img class="card-img-top" src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2881176356.webp" alt="Card image cap">
-        <div class="card-body">
-          <h4 class="card-title">Card title</h4>
-          <div class="content">
-            <div  class="el-rate">
-                <span class="el-rate__item" style="cursor: auto;">
-                    <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);">
-                    </i>
-                </span>
-                <span class="el-rate__item" style="cursor: auto;">
-                    <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);"><!----></i>
-                </span>
-                <span class="el-rate__item" style="cursor: auto;">
-                    <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);"><!----></i>
-                </span>
-                <span class="el-rate__item" style="cursor: auto;">
-                    <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);">
-                        <i class="el-rate__decimal el-icon-star-on" style="color: rgb(247, 186, 42); width: 50%;">
-                        </i>
-                    </i>
-                </span>
-                <span class="el-rate__item" style="cursor: auto;">
-                    <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);"><!----></i>
-                </span>
-                <span class="el-rate__text" style="color: rgb(255, 153, 0);">
-                    7
-                </span>
-            </div>
-        </div>
-        </div>
-      </div>
-      </div>
-      
-    <div class="col">
-      <div class="card">
-        <img class="card-img-top" src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2881176356.webp" alt="Card image cap">
-        <div class="card-body">
-          <h4 class="card-title">Card title</h4>
-            <div  class="el-rate">
-                <span class="el-rate__item" style="cursor: auto;">
-                    <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);">
-                    </i>
-                </span>
-                <span class="el-rate__item" style="cursor: auto;">
-                    <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);"><!----></i>
-                </span>
-                <span class="el-rate__item" style="cursor: auto;">
-                    <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);"><!----></i>
-                </span>
-                <span class="el-rate__item" style="cursor: auto;">
-                    <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);">
-                        <i class="el-rate__decimal el-icon-star-on" style="color: rgb(247, 186, 42); width: 50%;">
-                        </i>
-                    </i>
-                </span>
-                <span class="el-rate__item" style="cursor: auto;">
-                    <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);"><!----></i>
-                </span>
-                <span class="el-rate__text" style="color: rgb(255, 153, 0);">
-                    7
-                </span>
-            </div>
-        </div>
-      </div>
-      </div>
-  <!-- </div> -->
-
-<!-- </div> -->
-
-</div>
-
-
-  </div>
-  <!-- </div> -->
-
-
-<!-- <table id="tfhover" class="tftable" border="0" style="table-layout:fixed;overflow:hidden;text-overflow:ellipsis; nowrap:false;width:80%;margin:auto">
-
-    <tr>
-        <td>
-                <div class="card">
-              <div class="card-image">
-                <figure class="image is-4by3">
-                  <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-                </figure>
-              </div>
-              <div class="card-content">
-                <div class="media">
-                  <div class="media-content">
-                    <p class="title is-4">John Smith</p>
-                  </div>
-                </div>
-
-                <div class="content">
+    <div class="container" id="movieslist">
+        <div class="row mt-5 card-deck">
+            <div class="col">
+              <div class="card">
+                <img class="card-img-top" src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2881176356.webp" alt="Card image cap">
+                <div class="card-body">
+                  <h4 class="card-title">Card title</h4>
+                  <div class="content">
                     <div  class="el-rate">
                         <span class="el-rate__item" style="cursor: auto;">
                             <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);">
                             </i>
                         </span>
                         <span class="el-rate__item" style="cursor: auto;">
-                            <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);"></i>
+                            <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);"><!----></i>
                         </span>
                         <span class="el-rate__item" style="cursor: auto;">
-                            <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);"></i>
+                            <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);"><!----></i>
                         </span>
                         <span class="el-rate__item" style="cursor: auto;">
                             <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);">
@@ -625,7 +52,111 @@ body {
                             </i>
                         </span>
                         <span class="el-rate__item" style="cursor: auto;">
-                            <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);"></i>
+                            <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);"><!----></i>
+                        </span>
+                        <span class="el-rate__text" style="color: rgb(255, 153, 0);">
+                            7
+                        </span>
+                    </div>
+                </div>
+                </div>
+              </div>
+              </div>
+
+
+            <div class="col">
+              <div class="card">
+                <img class="card-img-top" src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2881176356.webp" alt="Card image cap">
+                <div class="card-body">
+                  <h4 class="card-title">Card title</h4>
+                  <div class="content">
+                    <div  class="el-rate">
+                        <span class="el-rate__item" style="cursor: auto;">
+                            <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);">
+                            </i>
+                        </span>
+                        <span class="el-rate__item" style="cursor: auto;">
+                            <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);"><!----></i>
+                        </span>
+                        <span class="el-rate__item" style="cursor: auto;">
+                            <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);"><!----></i>
+                        </span>
+                        <span class="el-rate__item" style="cursor: auto;">
+                            <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);">
+                                <i class="el-rate__decimal el-icon-star-on" style="color: rgb(247, 186, 42); width: 50%;">
+                                </i>
+                            </i>
+                        </span>
+                        <span class="el-rate__item" style="cursor: auto;">
+                            <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);"><!----></i>
+                        </span>
+                        <span class="el-rate__text" style="color: rgb(255, 153, 0);">
+                            7
+                        </span>
+                    </div>
+                </div>
+                </div>
+              </div>
+              </div>
+            <div class="col">
+              <div class="card">
+                <img class="card-img-top" src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2881176356.webp" alt="Card image cap">
+                <div class="card-body">
+                  <h4 class="card-title">Card title</h4>
+                  <div class="content">
+                    <div  class="el-rate">
+                        <span class="el-rate__item" style="cursor: auto;">
+                            <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);">
+                            </i>
+                        </span>
+                        <span class="el-rate__item" style="cursor: auto;">
+                            <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);"><!----></i>
+                        </span>
+                        <span class="el-rate__item" style="cursor: auto;">
+                            <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);"><!----></i>
+                        </span>
+                        <span class="el-rate__item" style="cursor: auto;">
+                            <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);">
+                                <i class="el-rate__decimal el-icon-star-on" style="color: rgb(247, 186, 42); width: 50%;">
+                                </i>
+                            </i>
+                        </span>
+                        <span class="el-rate__item" style="cursor: auto;">
+                            <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);"><!----></i>
+                        </span>
+                        <span class="el-rate__text" style="color: rgb(255, 153, 0);">
+                            7
+                        </span>
+                    </div>
+                </div>
+                </div>
+              </div>
+              </div>
+
+            <div class="col">
+              <div class="card">
+                <img class="card-img-top" src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2881176356.webp" alt="Card image cap">
+                <div class="card-body">
+                  <h4 class="card-title">Card title</h4>
+                    <div  class="el-rate">
+                        <span class="el-rate__item" style="cursor: auto;">
+                            <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);">
+                            </i>
+                        </span>
+                        <span class="el-rate__item" style="cursor: auto;">
+                            <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);"><!----></i>
+                        </span>
+                        <span class="el-rate__item" style="cursor: auto;">
+                            <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);"><!----></i>
+                        </span>
+                        <span class="el-rate__item" style="cursor: auto;">
+                            <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);">
+                                <i class="el-rate__decimal el-icon-star-on" style="color: rgb(247, 186, 42); width: 50%;">
+                                </i>
+                            </i>
+                        </span>
+                        <span class="el-rate__item" style="cursor: auto;">
+                            <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);"><!----></i>
                         </span>
                         <span class="el-rate__text" style="color: rgb(255, 153, 0);">
                             7
@@ -633,287 +164,293 @@ body {
                     </div>
                 </div>
               </div>
-            </div>
-        </td>
-        <td>
-                            <div class="card">
-              <div class="card-image">
-                <figure class="image is-4by3">
-                  <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-                </figure>
               </div>
-              <div class="card-content">
-                <div class="media">
-                  <div class="media-content">
-                    <p class="title is-4">John Smith</p>
-                  </div>
-                </div>
 
+      </div>
+      <div class="row mt-5 card-deck">
+          <div class="col">
+            <div class="card">
+              <img class="card-img-top" src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2881176356.webp" alt="Card image cap" referrerPolicy="no-referrer">
+              <div class="card-body">
+                <h4 class="card-title">Card title</h4>
                 <div class="content">
-                    <div  class="el-rate">
-                        <span class="el-rate__item" style="cursor: auto;">
-                              <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);">
-                                <i class="el-rate__decimal el-icon-star-on" style="color: rgb(247, 186, 42); width: 100%;">
-                                </i>
+                  <div  class="el-rate">
+                      <span class="el-rate__item" style="cursor: auto;">
+                          <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);">
+                          </i>
+                      </span>
+                      <span class="el-rate__item" style="cursor: auto;">
+                          <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);"><!----></i>
+                      </span>
+                      <span class="el-rate__item" style="cursor: auto;">
+                          <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);"><!----></i>
+                      </span>
+                      <span class="el-rate__item" style="cursor: auto;">
+                          <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);">
+                              <i class="el-rate__decimal el-icon-star-on" style="color: rgb(247, 186, 42); width: 50%;">
+                              </i>
+                          </i>
+                      </span>
+                      <span class="el-rate__item" style="cursor: auto;">
+                          <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);"><!----></i>
+                      </span>
+                      <span class="el-rate__text" style="color: rgb(255, 153, 0);">
+                          7
+                      </span>
+                  </div>
+              </div>
+              </div>
+            </div>
+            </div>
+
+
+          <div class="col">
+            <div class="card">
+              <img class="card-img-top" src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2881176356.webp" alt="Card image cap">
+              <div class="card-body">
+                <h4 class="card-title">Card title</h4>
+                <div class="content">
+                  <div  class="el-rate">
+                      <span class="el-rate__item" style="cursor: auto;">
+                          <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);">
+                          </i>
+                      </span>
+                      <span class="el-rate__item" style="cursor: auto;">
+                          <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);"><!----></i>
+                      </span>
+                      <span class="el-rate__item" style="cursor: auto;">
+                          <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);"><!----></i>
+                      </span>
+                      <span class="el-rate__item" style="cursor: auto;">
+                          <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);">
+                              <i class="el-rate__decimal el-icon-star-on" style="color: rgb(247, 186, 42); width: 50%;">
+                              </i>
+                          </i>
+                      </span>
+                      <span class="el-rate__item" style="cursor: auto;">
+                          <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);"><!----></i>
+                      </span>
+                      <span class="el-rate__text" style="color: rgb(255, 153, 0);">
+                          7
+                      </span>
+                  </div>
+              </div>
+              </div>
+            </div>
+            </div>
+
+          <div class="col">
+            <div class="card">
+              <img class="card-img-top" src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2881176356.webp" alt="Card image cap">
+              <div class="card-body">
+                <h4 class="card-title">Card title</h4>
+                <div class="content">
+                  <div  class="el-rate">
+                      <span class="el-rate__item" style="cursor: auto;">
+                          <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);">
+                          </i>
+                      </span>
+                      <span class="el-rate__item" style="cursor: auto;">
+                          <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);"><!----></i>
+                      </span>
+                      <span class="el-rate__item" style="cursor: auto;">
+                          <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);"><!----></i>
+                      </span>
+                      <span class="el-rate__item" style="cursor: auto;">
+                          <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);">
+                              <i class="el-rate__decimal el-icon-star-on" style="color: rgb(247, 186, 42); width: 50%;">
+                              </i>
+                          </i>
+                      </span>
+                      <span class="el-rate__item" style="cursor: auto;">
+                          <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);"><!----></i>
+                      </span>
+                      <span class="el-rate__text" style="color: rgb(255, 153, 0);">
+                          7
+                      </span>
+                  </div>
+              </div>
+              </div>
+            </div>
+            </div>
+
+          <div class="col">
+            <div class="card">
+              <img class="card-img-top" src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2881176356.webp" alt="Card image cap">
+              <div class="card-body">
+                <h4 class="card-title">Card title</h4>
+                  <div  class="el-rate">
+                      <span class="el-rate__item" style="cursor: auto;">
+                          <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);">
+                          </i>
+                      </span>
+                      <span class="el-rate__item" style="cursor: auto;">
+                          <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);"><!----></i>
+                      </span>
+                      <span class="el-rate__item" style="cursor: auto;">
+                          <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);"><!----></i>
+                      </span>
+                      <span class="el-rate__item" style="cursor: auto;">
+                          <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);">
+                              <i class="el-rate__decimal el-icon-star-on" style="color: rgb(247, 186, 42); width: 50%;">
+                              </i>
+                          </i>
+                      </span>
+                      <span class="el-rate__item" style="cursor: auto;">
+                          <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);"><!----></i>
+                      </span>
+                      <span class="el-rate__text" style="color: rgb(255, 153, 0);">
+                          7
+                      </span>
+                  </div>
+              </div>
+            </div>
+            </div>
+
+
+    </div>
+    <div class="row mt-5 card-deck">
+        <div class="col">
+          <div class="card">
+            <img class="card-img-top" src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2881176356.webp" alt="Card image cap">
+            <div class="card-body">
+              <h4 class="card-title">Card title</h4>
+              <div class="content">
+                <div  class="el-rate">
+                    <span class="el-rate__item" style="cursor: auto;">
+                        <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);">
+                        </i>
+                    </span>
+                    <span class="el-rate__item" style="cursor: auto;">
+                        <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);"><!----></i>
+                    </span>
+                    <span class="el-rate__item" style="cursor: auto;">
+                        <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);"><!----></i>
+                    </span>
+                    <span class="el-rate__item" style="cursor: auto;">
+                        <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);">
+                            <i class="el-rate__decimal el-icon-star-on" style="color: rgb(247, 186, 42); width: 50%;">
                             </i>
-                        </span>
-                        <span class="el-rate__item" style="cursor: auto;">
-                            <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);"> </i>
-                        </span>
-                        <span class="el-rate__item" style="cursor: auto;">
-                            <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);"> </i>
-                        </span>
-                        <span class="el-rate__item" style="cursor: auto;">
-                            <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);">
-                                <i class="el-rate__decimal el-icon-star-on" style="color: rgb(247, 186, 42); width: 70%;">
-                                </i>
+                        </i>
+                    </span>
+                    <span class="el-rate__item" style="cursor: auto;">
+                        <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);"><!----></i>
+                    </span>
+                    <span class="el-rate__text" style="color: rgb(255, 153, 0);">
+                        7
+                    </span>
+                </div>
+            </div>
+            </div>
+          </div>
+          </div>
+
+
+        <div class="col">
+          <div class="card">
+            <img class="card-img-top" src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2881176356.webp" alt="Card image cap">
+            <div class="card-body">
+              <h4 class="card-title">Card title</h4>
+              <div class="content">
+                <div  class="el-rate">
+                    <span class="el-rate__item" style="cursor: auto;">
+                        <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);">
+                        </i>
+                    </span>
+                    <span class="el-rate__item" style="cursor: auto;">
+                        <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);"><!----></i>
+                    </span>
+                    <span class="el-rate__item" style="cursor: auto;">
+                        <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);"><!----></i>
+                    </span>
+                    <span class="el-rate__item" style="cursor: auto;">
+                        <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);">
+                            <i class="el-rate__decimal el-icon-star-on" style="color: rgb(247, 186, 42); width: 50%;">
                             </i>
-                        </span>
-                        <span class="el-rate__item" style="cursor: auto;">
-                              <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);">
-                                <i class="el-rate__decimal el-icon-star-on" style="color: rgb(247, 186, 42); width: 0%;">
-                                </i>
+                        </i>
+                    </span>
+                    <span class="el-rate__item" style="cursor: auto;">
+                        <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);"><!----></i>
+                    </span>
+                    <span class="el-rate__text" style="color: rgb(255, 153, 0);">
+                        7
+                    </span>
+                </div>
+            </div>
+            </div>
+          </div>
+          </div>
+
+
+        <div class="col">
+          <div class="card">
+            <img class="card-img-top" src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2881176356.webp" alt="Card image cap">
+            <div class="card-body">
+              <h4 class="card-title">Card title</h4>
+              <div class="content">
+                <div  class="el-rate">
+                    <span class="el-rate__item" style="cursor: auto;">
+                        <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);">
+                        </i>
+                    </span>
+                    <span class="el-rate__item" style="cursor: auto;">
+                        <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);"><!----></i>
+                    </span>
+                    <span class="el-rate__item" style="cursor: auto;">
+                        <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);"><!----></i>
+                    </span>
+                    <span class="el-rate__item" style="cursor: auto;">
+                        <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);">
+                            <i class="el-rate__decimal el-icon-star-on" style="color: rgb(247, 186, 42); width: 50%;">
                             </i>
-                        </span>
-                        <span class="el-rate__text" style="color: rgb(255, 153, 0);">
-                            7.4
-                        </span>
-                    </div>
+                        </i>
+                    </span>
+                    <span class="el-rate__item" style="cursor: auto;">
+                        <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);"><!----></i>
+                    </span>
+                    <span class="el-rate__text" style="color: rgb(255, 153, 0);">
+                        7
+                    </span>
                 </div>
-              </div>
             </div>
-        </td>
-
-        <td>
-                  <div class="card">
-              <div class="card-image">
-                <figure class="image is-4by3">
-                  <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-                </figure>
-              </div>
-              <div class="card-content">
-                <div class="media">
-                  <div class="media-content">
-                    <p class="title is-4">John Smith</p>
-                  </div>
-                </div>
-
-                <div class="content">
-                  10 分
-                  <br>
-                </div>
-              </div>
             </div>
-        </td>
+          </div>
+          </div>
 
-        <td>
-                        <div class="card">
-              <div class="card-image">
-                <figure class="image is-4by3">
-                  <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-                </figure>
-              </div>
-              <div class="card-content">
-                <div class="media">
-                  <div class="media-content">
-                    <p class="title is-4">John Smith</p>
-                  </div>
+        <div class="col">
+          <div class="card">
+            <img class="card-img-top" src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2881176356.webp" alt="Card image cap">
+            <div class="card-body">
+              <h4 class="card-title">Card title</h4>
+                <div  class="el-rate">
+                    <span class="el-rate__item" style="cursor: auto;">
+                        <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);">
+                        </i>
+                    </span>
+                    <span class="el-rate__item" style="cursor: auto;">
+                        <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);"><!----></i>
+                    </span>
+                    <span class="el-rate__item" style="cursor: auto;">
+                        <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);"><!----></i>
+                    </span>
+                    <span class="el-rate__item" style="cursor: auto;">
+                        <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);">
+                            <i class="el-rate__decimal el-icon-star-on" style="color: rgb(247, 186, 42); width: 50%;">
+                            </i>
+                        </i>
+                    </span>
+                    <span class="el-rate__item" style="cursor: auto;">
+                        <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);"><!----></i>
+                    </span>
+                    <span class="el-rate__text" style="color: rgb(255, 153, 0);">
+                        7
+                    </span>
                 </div>
-
-                <div class="content">
-                  10 分
-                  <br>
-                </div>
-              </div>
             </div>
-        </td>
-    </tr>
+          </div>
+          </div>
 
-
-    <tr>
-        <td>
-                <div class="card">
-              <div class="card-image">
-                <figure class="image is-4by3">
-                  <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-                </figure>
-              </div>
-              <div class="card-content">
-                <div class="media">
-                  <div class="media-content">
-                    <p class="title is-4">John Smith</p>
-                  </div>
-                </div>
-
-                <div class="content">
-                  10 分
-                  <br>
-                </div>
-              </div>
-            </div>
-        </td>
-        <td>
-                            <div class="card">
-              <div class="card-image">
-                <figure class="image is-4by3">
-                  <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-                </figure>
-              </div>
-              <div class="card-content">
-                <div class="media">
-                  <div class="media-content">
-                    <p class="title is-4">John Smith</p>
-                  </div>
-                </div>
-
-                <div class="content">
-                  10 分
-                  <br>
-                </div>
-              </div>
-            </div>
-        </td>
-
-        <td>
-                  <div class="card">
-              <div class="card-image">
-                <figure class="image is-4by3">
-                  <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-                </figure>
-              </div>
-              <div class="card-content">
-                <div class="media">
-                  <div class="media-content">
-                    <p class="title is-4">John Smith</p>
-                  </div>
-                </div>
-
-                <div class="content">
-                  10 分
-                  <br>
-                </div>
-              </div>
-            </div>
-        </td>
-
-        <td>
-                        <div class="card">
-              <div class="card-image">
-                <figure class="image is-4by3">
-                  <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-                </figure>
-              </div>
-              <div class="card-content">
-                <div class="media">
-                  <div class="media-content">
-                    <p class="title is-4">John Smith</p>
-                  </div>
-                </div>
-
-                <div class="content">
-                  10 分
-                  <br>
-                </div>
-              </div>
-            </div>
-        </td>
-    </tr>
-
-    <tr>
-        <td>
-                <div class="card">
-              <div class="card-image">
-                <figure class="image is-4by3">
-                  <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-                </figure>
-              </div>
-              <div class="card-content">
-                <div class="media">
-                  <div class="media-content">
-                    <p class="title is-4">John Smith</p>
-                  </div>
-                </div>
-
-                <div class="content">
-                  10 分
-                  <br>
-                </div>
-              </div>
-            </div>
-        </td>
-        <td>
-                            <div class="card">
-              <div class="card-image">
-                <figure class="image is-4by3">
-                  <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-                </figure>
-              </div>
-              <div class="card-content">
-                <div class="media">
-                  <div class="media-content">
-                    <p class="title is-4">John Smith</p>
-                  </div>
-                </div>
-
-                <div class="content">
-                  10 分
-                  <br>
-                </div>
-              </div>
-            </div>
-        </td>
-
-        <td>
-                  <div class="card">
-              <div class="card-image">
-                <figure class="image is-4by3">
-                  <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-                </figure>
-              </div>
-              <div class="card-content">
-                <div class="media">
-                  <div class="media-content">
-                    <p class="title is-4">John Smith</p>
-                  </div>
-                </div>
-
-                <div class="content">
-                  10 分
-                  <br>
-                </div>
-              </div>
-            </div>
-        </td>
-
-        <td>
-                        <div class="card">
-              <div class="card-image">
-                <figure class="image is-4by3">
-                  <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-                </figure>
-              </div>
-              <div class="card-content">
-                <div class="media">
-                  <div class="media-content">
-                    <p class="title is-4">John Smith</p>
-                  </div>
-                </div>
-
-                <div class="content">
-                  10 分
-                  <br>
-                </div>
-              </div>
-            </div>
-        </td>
-    </tr>
-
-
-</table> -->
-
-
-<div>
-
-</div>
+    </div>
+      </div>
 </body>
 </html>
