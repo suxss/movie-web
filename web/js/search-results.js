@@ -14,9 +14,9 @@ Object.prototype.parseHTMLTemplate = function (functionObject) {
     }
 };
     var template01 = parseHTMLTemplate(function () {
-        /* <div class="row card-deck">
+        /* <div class="row card-deck" onclick="window.open('${href}')">
     <div class="col">
-        <div class="card mb-8">
+        <div class="card box-shadow mb-8">
             <div class="row no-gutters">
                 <div class="col-md-2">
                     <img class="card-img" src="${cover}" alt="Card image cap" referrerPolicy="no-referrer" >
@@ -117,8 +117,8 @@ Object.prototype.parseHTMLTemplate = function (functionObject) {
             }
             newHtml += template01(item);
         }
-        console.log(newHtml);
-        $('#search-results').html(newHtml);
+        // console.log(newHtml);
+        $('#search-results').append(newHtml);
     }
 
 
