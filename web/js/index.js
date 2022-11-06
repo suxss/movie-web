@@ -17,7 +17,7 @@
 
     var template1 = parseHTMLTemplate(function () {
         /*
-        <div class="card">
+        <div class="card box-shadow" onclick="window.open('${href}')">
             <img class="card-img-top" src="${cover}" alt="Card image cap" referrerPolicy="no-referrer">
             <div class="card-body">
               <h4 class="card-title">${title}</h4>
@@ -81,10 +81,10 @@
                 item['yellow' + (j+1)] = yellow[j].toString();
             }
             html += template1(item);
-            console.log(item);
+            // console.log(item);
             if (count %4 == 0) {
               html += '</div>';
             }
         }
-        $('#movieslist').html(html);
+        $('#movieslist').append(html);
     }
