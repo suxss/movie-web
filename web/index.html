@@ -12,6 +12,7 @@
     <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/lottie-web/5.9.6/lottie.js"></script>
     <script src="js/index.js"></script>
     <!-- <script src="https://unpkg.com/element-ui/lib/index.js"></script> -->
     <link rel="stylesheet" href="css/main.css">
@@ -26,6 +27,32 @@
 	transform: translateY(-15px);
 }
     </style>
+        <style type="text/css">
+            .container {
+                scroll-behavior: smooth;
+            }
+    .back-to-top {
+        border-color: #00ddb3;
+        background-color: white;
+        cursor: pointer;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        display:none;
+        border-radius: 50%;width: 80px;height: 80px;
+    }
+    .back-to-top:hover {
+        background-color: #6c757d29;
+        border-color: #e4e7ed;
+    }
+    #back-to-top-gif {
+        position: relative;
+        top: 8px;
+    }
+    </style>
+     <script>
+
+	</script>
 </head>
 <body>
     <h1 class="title"> xxx 网站</h1>
@@ -36,9 +63,92 @@
           <div class="search"> <i class="fa fa-search"></i> <input type="text" class="form-control" placeholder="搜索电影"> <button class="btn btn-primary">搜索</button> </div>
         </div>
     </div>
+    <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" role="button" title="返回顶部" data-toggle="tooltip" data-placement="left" style="">
+        <div id="back-to-top-gif"></div>
+    </a>
+
 
     <div class="container" id="movieslist">
 
     </div>
+    <div class="container" style="width: 20%;height: 20%" id="scrollerFooter1">
+        <div id="load-animation"></div>
+    </div>
 </body>
+<script>
+
+        var loadingGif = lottie.loadAnimation({
+            container: document.getElementById('load-animation'), // the dom element that will contain the animation
+            renderer: 'svg', //渲染出来的是什么格式
+            loop: true,  //循环播放
+            autoplay: true, //自动播放
+            path: 'data/blue-loading.json' // the path to the animation json
+        });
+
+        infinityScroll('#scrollerFooter1', async function () {
+          var data = await getData();
+          addCard(data);
+        });
+
+        var toTopGif = lottie.loadAnimation({
+            container: document.getElementById('back-to-top-gif'), // the dom element that will contain the animation
+            renderer: 'svg', //渲染出来的是什么格式
+            loop: false,  //循环播放
+            autoplay: false, //自动播放
+            path: 'data/to-top.json' // the path to the animation json
+        });
+
+        var leader = 0;
+
+		var timer = null;
+
+        window.onscroll = function(){
+            if ($(this).scrollTop() > 50) {
+                $('#back-to-top').fadeIn();
+            } else {
+                $('#back-to-top').fadeOut();
+            }
+            leader = document.documentElement.scrollTop;//每滑动一次获取被卷去的距离
+        };
+
+        $('#back-to-top').click(function () {
+            // const drag = 10;
+            // const location = 0;
+
+            toTopGif.playSegments([0, 60], true);
+            $('#back-to-top').tooltip('hide');
+
+
+			clearInterval(timer);
+			timer = setInterval(function(){
+				var target = 0;
+				var speed = (target - leader)/10;
+				speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+				leader = leader + speed;
+				window.scrollTo(0,leader); //滚动到指定坐标
+				if(leader === 0){
+					clearInterval(timer);
+				};
+                console.log(speed, leader, "aaa");
+			},30);
+
+
+
+            // $('body,html').animate({
+            //     scrollTop: 0
+            // }, 1500);
+
+
+            // const gap = document.documentElement.scrollTop || document.body.scrollTop;
+            //   if (gap > location) {
+            //     window.requestAnimationFrame(scrollToTop);
+            //     window.scrollTo(0, gap - gap / drag);
+            //   }
+
+
+
+            // toTopGif.pause();
+                return false;
+        });
+</script>
 </html>
