@@ -69,7 +69,7 @@
         var item;
         for (var i = 0; i < data['result'].length; i++) {
             count += 1;
-            if (count % 4 == 1) {
+            if (count % 4 === 1) {
                 html += '<div class="row mt-5 card-deck">';
             }
             item = data['result'][i];
@@ -82,9 +82,41 @@
             }
             html += template1(item);
             // console.log(item);
-            if (count %4 == 0) {
+            if (count %4 === 0) {
               html += '</div>';
             }
         }
         $('#movieslist').append(html);
     }
+
+  function infinityScroll(footerNode, callback) {
+        var observer = new IntersectionObserver(function(changes) {
+            if (changes[0].intersectionRatio <= 0) return;
+            callback();
+        });
+        observer.observe(document.querySelector(footerNode));
+    }
+
+    function getData() {
+        return new Promise((resolve, reject) => {
+            fetch("./test/indexAddCard.json")
+            .then( response => response.json() )
+            .then( data => {console.log(data); resolve(data);} )
+        });
+    }
+
+
+    	$(document).ready(function(){
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 50) {
+                    $('#back-to-top').fadeIn();
+                } else {
+                    $('#back-to-top').fadeOut();
+                }
+            });
+            // scroll body to 0px on click
+
+
+            $('#back-to-top').tooltip('show');
+
+        });
