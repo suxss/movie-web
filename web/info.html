@@ -3,20 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>电影详情</title>
-   <link rel="stylesheet" href="./css/emui.css">
+    <link rel="stylesheet" href="./css/emui.css">
     <!-- <link href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"> -->
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="js/index.js"></script>
+    <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
+    <script src="js/info.js"></script>
+
     <!-- <script src="https://unpkg.com/element-ui/lib/index.js"></script> -->
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/sr.css">
 </head>
 <body>
     <h1 class="title"> xxx 网站</h1>
+
     <div class="container">
         <div class="col-md-8" style="
     left: 205px;
@@ -25,111 +28,7 @@
         </div>
     </div>
     <div class="container" id="info">
-        <div class="row card-deck">
-            <div class="col">
-                <div class="card mb-12">
-                    <div class="row no-gutters">
-                        <div class="col-md-3">
-                            <img class="card-img" src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2881176356.webp" alt="Card image cap" referrerPolicy="no-referrer" >
-                        </div>
-                        <div class="col-mb-8">
-                            <div class="card-body">
-                                <h4 class="card-title">Card title</h4>
-                                <div class="content">
-                                    <div class="row" style="width: 400px">
-                                        <div class="col-6">
-                                            <div class="el-rate">
-                                    <span class="el-rate__item" style="cursor: auto;">
-                                        <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);">
-                                        </i>
-                                    </span>
-                                    <span class="el-rate__item" style="cursor: auto;">
-                                        <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);"><!----></i>
-                                    </span>
-                                    <span class="el-rate__item" style="cursor: auto;">
-                                        <i class="el-rate__icon el-icon-star-on" style="color: rgb(247, 186, 42);"><!----></i>
-                                    </span>
-                                    <span class="el-rate__item" style="cursor: auto;">
-                                        <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);">
-                                            <i class="el-rate__decimal el-icon-star-on" style="color: rgb(247, 186, 42); width: 50%;">
-                                            </i>
-                                        </i>
-                                    </span>
-                                    <span class="el-rate__item" style="cursor: auto;">
-                                        <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);"><!----></i>
-                                    </span>
-                                    <span class="el-rate__text" style="color: rgb(255, 153, 0);">
-                                        7
-                                    </span>
-                                </div>
-                                        </div>
-                                        <div class="col" style="top: -4px">
-                                            <span class="badge badge-primary">剧情</span>
-                                        </div>
-                                    </div>
-                                    <div class="people">
-                                        <div class="directors">
-                                            <p>导演：XXX</p>
-                                        </div>
-                                        <div class="actors">
-                                            <p>主演：XXX</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row card-deck" id="description">
-            <div class="col">
-                <div class="card mb-12">
-                    <div class="row no-gutters">
-                        <div class="col">
-                            <div class="card-body">
-                                <h4 class="card-title">剧情简介</h4>
-                                <div class="content">
-                                    <div id="desc-content">
-                                        这是一部电影
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row mt-5 card-deck">
-        <div class="card" onclick="window.open('${href}')">
-            <img class="card-img-top" src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2881176356.webp" alt="Card image cap">
-            <div class="card-body">
-              <h4 class="card-title">Card title</h4>
-            </div>
-        </div>
 
-        <div class="card" onclick="window.open('${href}')">
-            <img class="card-img-top" src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2881176356.webp" alt="Card image cap">
-            <div class="card-body">
-              <h4 class="card-title">Card title</h4>
-            </div>
-        </div >
-
-        <div class="card" onclick="window.open('${href}')">
-            <img class="card-img-top" src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2881176356.webp" alt="Card image cap">
-            <div class="card-body">
-              <h4 class="card-title">Card title</h4>
-            </div>
-        </div>
-
-        <div class="card" onclick="window.open('${href}')">
-            <img class="card-img-top" src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2881176356.webp" alt="Card image cap">
-            <div class="card-body">
-              <h4 class="card-title">Card title</h4>
-            </div>
-    </div>
-
-    </div>
     </div>
 
 </body>

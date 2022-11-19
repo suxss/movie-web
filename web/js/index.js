@@ -100,23 +100,34 @@
     function getData() {
         return new Promise((resolve, reject) => {
             fetch("./test/indexAddCard.json")
-            .then( response => response.json() )
-            .then( data => {console.log(data); resolve(data);} )
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    resolve(data);
+                })
         });
     }
 
 
-    	$(document).ready(function(){
-            $(window).scroll(function () {
-                if ($(this).scrollTop() > 50) {
-                    $('#back-to-top').fadeIn();
-                } else {
-                    $('#back-to-top').fadeOut();
-                }
-            });
-            // scroll body to 0px on click
-
-
-            $('#back-to-top').tooltip('show');
-
+    $(function () {
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 50) {
+                $('#back-to-top').fadeIn();
+            } else {
+                $('#back-to-top').fadeOut();
+            }
         });
+        // scroll body to 0px on click
+
+
+        $('#back-to-top').tooltip('show');
+
+
+    });
+
+    $(function () {
+        infinityScroll('#scrollerFooter1', async function () {
+            var data = await getData();
+            addCard(data);
+        });
+    })

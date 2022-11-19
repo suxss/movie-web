@@ -72,17 +72,51 @@ body {
 	position:absolute;
 	top:19rem;
   -webkit-transition: all .2s ease-out;
-	-moz-transition: all .2s ease-out;
-	-ms-transition: all .2s ease-out;
-	-o-transition: all .2s ease-out;
-	transition: all .2s ease-out;
-	filter:drop-shadow(2px -9px 4px rgba(0, 69, 134, 0.2));
-}
-.card:hover svg{
-	filter:drop-shadow(2px -9px 4px rgba(0, 69, 134, 0.4));
+    -moz-transition: all .2s ease-out;
+    -ms-transition: all .2s ease-out;
+    -o-transition: all .2s ease-out;
+    transition: all .2s ease-out;
+    filter: drop-shadow(2px -9px 4px rgba(0, 69, 134, 0.2));
 }
 
+.card:hover svg {
+    filter: drop-shadow(2px -9px 4px rgba(0, 69, 134, 0.4));
+}
 
+.power {
+    height: 10px;
+    float: left;
+    margin: 1px 4px;
+    background: #ffd596 none repeat scroll 0 0;
+}
+
+.starstop {
+    margin: 0;
+    margin-left: 5px;
+    font-size: 12px;
+    line-height: 14px;
+    float: left;
+}
+
+.rating_per {
+    font-size: 11px;
+    line-height: 14px;
+    position: relative;
+    top: -7px;
+}
+
+#echart {
+    position: relative;
+    left: -15px;
+}
+
+#info-card {
+    cursor: default;
+}
+
+#description {
+    cursor: default;
+}
 
 /*.card:hover i{*/
 /*	transform: rotate(-180deg);*/

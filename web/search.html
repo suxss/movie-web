@@ -11,25 +11,35 @@
     <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="js/index.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/lottie-web/5.9.6/lottie.js"></script>
+    <!--    <script src="js/index.js"></script>-->
     <script src="js/search-results.js"></script>
-    <script src="js/template.js"></script>
+
+    <script src="js/backToTop.js"></script>
     <!-- <script src="https://unpkg.com/element-ui/lib/index.js"></script> -->
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/sr.css">
+    <link href="css/toTop.css" rel="stylesheet">
 </head>
 <body>
-    <h1 class="title"> xxx 网站</h1>
-    <div class="container">
-        <div class="col-md-8" style="
+<h1 class="title"> xxx 网站</h1>
+<div class="container">
+    <div class="col-md-8" style="
     left: 205px;
 ">
-            <div class="search"> <i class="fa fa-search"></i> <input type="text" class="form-control" placeholder="搜索电影"> <button class="btn btn-primary">搜索</button> </div>
+        <div class="search"><i class="fa fa-search"></i> <input type="text" class="form-control" placeholder="搜索电影">
+            <button class="btn btn-primary">搜索</button>
         </div>
     </div>
+</div>
 
-    <div class="container" id="search-results">
+<a class="btn btn-primary btn-lg back-to-top" data-placement="left" data-toggle="tooltip" href="#" id="back-to-top"
+   role="button" title="返回顶部">
+    <div id="back-to-top-gif"></div>
+</a>
 
-    </div>
+<div class="container" id="search-results">
+
+</div>
 </body>
 </html>
