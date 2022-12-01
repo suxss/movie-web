@@ -1,24 +1,23 @@
 // import './template.js';
-Object.prototype.parseHTMLTemplate = function (functionObject) {
+function myparseHTMLTemplate(functionObject) {
     return function (scope) {
         return functionObject.toString().match(/\/\*([\s\S]*?)\*\//)[1].replace(/\$\{\w.+\}/g, function (variable) {
             var value = scope;
-
             variable = variable.replace('${', '').replace('}', '');
             variable.split('.').forEach(function (section) {
                 value = value[section];
-                // console.log(section, value);
             });
             return value;
         });
     }
-};
+}
+
 
 function max(a, b) {
     return a > b ? a : b;
 }
 
-var template01 = parseHTMLTemplate(function () {
+var template01 = myparseHTMLTemplate(function () {
     /* <div class="row card-deck" onclick="window.open('${href}')">
 <div class="col">
     <div class="card box-shadow mb-8">

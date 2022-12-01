@@ -1,4 +1,4 @@
-Object.prototype.parseHTMLTemplate = function (functionObject) {
+function myparseHTMLTemplate(functionObject) {
     return function (scope) {
         return functionObject.toString().match(/\/\*([\s\S]*?)\*\//)[1].replace(/\$\{\w.+\}/g, function (variable) {
             var value = scope;
@@ -9,13 +9,14 @@ Object.prototype.parseHTMLTemplate = function (functionObject) {
             return value;
         });
     }
-};
+}
+
 
 function max(a, b) {
     return a > b ? a : b;
 }
 
-var template1 = parseHTMLTemplate(function () {
+var template1 = myparseHTMLTemplate(function () {
     /*
     <div class="row card-deck">
         <div class="col">
