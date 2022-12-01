@@ -1,66 +1,67 @@
-    Object.prototype.parseHTMLTemplate = function (functionObject) {
-        return function (scope) {
-            return functionObject.toString().match(/\/\*([\s\S]*?)\*\//)[1].replace(/\$\{\w.+\}/g, function (variable) {
-                var value = scope;
-                variable = variable.replace('${', '').replace('}', '');
-                variable.split('.').forEach(function (section) {
-                    value = value[section];
-                });
-                return value;
+function myparseHTMLTemplate(functionObject) {
+    return function (scope) {
+        return functionObject.toString().match(/\/\*([\s\S]*?)\*\//)[1].replace(/\$\{\w.+\}/g, function (variable) {
+            var value = scope;
+            variable = variable.replace('${', '').replace('}', '');
+            variable.split('.').forEach(function (section) {
+                value = value[section];
             });
-        }
-    };
-
-    function max(a, b) {
-        return a > b ? a : b;
+            return value;
+        });
     }
+}
 
-    var template1 = parseHTMLTemplate(function () {
-        /*
-        <div class="card box-shadow" onclick="window.open('${href}')">
-            <img class="card-img-top" src="${cover}" alt="Card image cap" referrerPolicy="no-referrer">
-            <div class="card-body">
-              <h4 class="card-title">${title}</h4>
-              <div class="content">
-                <div class="el-rate">
-               <span class="el-rate__item" style="cursor: auto;">
-                    <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);">
-                        <i class="el-rate__decimal el-icon-star-on" style="color: rgb(247, 186, 42); width: ${yellow1}%;">
-                        </i>
+
+function max(a, b) {
+    return a > b ? a : b;
+}
+
+var template1 = myparseHTMLTemplate(function () {
+    /*
+    <div class="card box-shadow" onclick="window.open('${href}')">
+        <img class="card-img-top" src="${cover}" alt="Card image cap" referrerPolicy="no-referrer">
+        <div class="card-body">
+          <h4 class="card-title">${title}</h4>
+          <div class="content">
+            <div class="el-rate">
+           <span class="el-rate__item" style="cursor: auto;">
+                <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);">
+                    <i class="el-rate__decimal el-icon-star-on" style="color: rgb(247, 186, 42); width: ${yellow1}%;">
                     </i>
-                </span>
-                <span class="el-rate__item" style="cursor: auto;">
-                    <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);">
-                        <i class="el-rate__decimal el-icon-star-on" style="color: rgb(247, 186, 42); width: ${yellow2}%;">
-                        </i>
+                </i>
+            </span>
+            <span class="el-rate__item" style="cursor: auto;">
+                <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);">
+                    <i class="el-rate__decimal el-icon-star-on" style="color: rgb(247, 186, 42); width: ${yellow2}%;">
                     </i>
-                </span>
-                <span class="el-rate__item" style="cursor: auto;">
-                    <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);">
-                        <i class="el-rate__decimal el-icon-star-on" style="color: rgb(247, 186, 42); width: ${yellow3}%;">
-                        </i>
+                </i>
+            </span>
+            <span class="el-rate__item" style="cursor: auto;">
+                <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);">
+                    <i class="el-rate__decimal el-icon-star-on" style="color: rgb(247, 186, 42); width: ${yellow3}%;">
                     </i>
-                </span>
-                <span class="el-rate__item" style="cursor: auto;">
-                    <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);">
-                        <i class="el-rate__decimal el-icon-star-on" style="color: rgb(247, 186, 42); width: ${yellow4}%;">
-                        </i>
+                </i>
+            </span>
+            <span class="el-rate__item" style="cursor: auto;">
+                <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);">
+                    <i class="el-rate__decimal el-icon-star-on" style="color: rgb(247, 186, 42); width: ${yellow4}%;">
                     </i>
-                </span>
-                <span class="el-rate__item" style="cursor: auto;">
-                    <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);">
-                        <i class="el-rate__decimal el-icon-star-on" style="color: rgb(247, 186, 42); width: ${yellow5}%;">
-                        </i>
+                </i>
+            </span>
+            <span class="el-rate__item" style="cursor: auto;">
+                <i class="el-rate__icon el-icon-star-on" style="color: rgb(239, 242, 247);">
+                    <i class="el-rate__decimal el-icon-star-on" style="color: rgb(247, 186, 42); width: ${yellow5}%;">
                     </i>
-                </span>
-                    <span class="el-rate__text" style="color: rgb(255, 153, 0);">
-                      ${rate}
-                  </span>
-                </div>
-            </div>
+                </i>
+            </span>
+                <span class="el-rate__text" style="color: rgb(255, 153, 0);">
+                  ${rate}
+              </span>
             </div>
         </div>
-         */
+        </div>
+    </div>
+     */
     });
 
     function addCard(data) {
