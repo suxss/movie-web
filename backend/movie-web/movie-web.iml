@@ -42,5 +42,7 @@
       </library>
     </orderEntry>
     <orderEntry type="library" exported="" scope="PROVIDED" name="Tomcat 10.0.16" level="application_server_libraries" />
+    <orderEntry type="library" exported="" name="druid-1.2.8" level="project" />
+    <orderEntry type="library" exported="" name="commons-dbutils-1.7" level="project" />
   </component>
 </module>

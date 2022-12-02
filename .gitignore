@@ -1,3 +1,4 @@
 web/preview/
 Feature-extraction/model/
 Feature-extraction/db_settings.py
+backend/venv
