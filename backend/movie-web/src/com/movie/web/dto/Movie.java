@@ -21,6 +21,7 @@ public class Movie {
     private String s2_mid;
     private String s3_mid;
     private String s4_mid;
+//    private float similarity=0;
 
     public String getMname() {
         return mname;
