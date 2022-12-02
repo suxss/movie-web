@@ -22,6 +22,6 @@ def updateSimilar():
         conn.updateSimilar(id_content[i][0], select_result[0][0], select_result[1][0], select_result[2][0],
                            select_result[3][0])
 
-
+# 2826
 if __name__ == '__main__':
     updateSimilar()
