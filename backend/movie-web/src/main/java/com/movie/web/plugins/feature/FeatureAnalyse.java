@@ -19,9 +19,9 @@ public class FeatureAnalyse {
         String s = "";
         for (float item :
                 f) {
-            s += formatter.format(f);
+            s += "," + formatter.format(item);
         }
-        return s;
+        return s.substring(1);
     }
 
     public static float similarity(String s1, String s2){
@@ -43,5 +43,21 @@ public class FeatureAnalyse {
             return 0;
         }
         return sum / (sum1 * sum2);
+    }
+
+    public static String addFeature(String s1, String s2) {
+        float[] f1=str2Array(s1), f2=str2Array(s2);
+        for (int i = 0; i < f1.length; i++) {
+            f1[i] += f2[i];
+        }
+        return array2Str(f1);
+    }
+
+    public static String addFeature(String s1, String s2, float w1, float w2) {
+        float[] f1=str2Array(s1), f2=str2Array(s2);
+        for (int i = 0; i < f1.length; i++) {
+            f1[i] = f1[i] * w1 + f2[i] * w2;
+        }
+        return array2Str(f1);
     }
 }

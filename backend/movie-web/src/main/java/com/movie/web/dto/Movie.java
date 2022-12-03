@@ -9,7 +9,7 @@ public class Movie {
     private String content;
     private String director;
     private String actors;
-    private double rate;
+    private float rate;
     private int rate_num;
     private String feature;
     private float one_star;
@@ -21,7 +21,7 @@ public class Movie {
     private String s2_mid;
     private String s3_mid;
     private String s4_mid;
-//    private float similarity=0;
+    private float similarity=0;
 
     public String getMname() {
         return mname;
@@ -87,11 +87,11 @@ public class Movie {
         this.actors = actors;
     }
 
-    public double getRate() {
+    public float getRate() {
         return rate;
     }
 
-    public void setRate(double rate) {
+    public void setRate(float rate) {
         this.rate = rate;
     }
 
@@ -181,5 +181,13 @@ public class Movie {
 
     public void setS4_mid(String s4_mid) {
         this.s4_mid = s4_mid;
+    }
+
+    public float getSimilarity() {
+        return similarity;
+    }
+
+    public void setSimilarity(float similarity) {
+        this.similarity = similarity;
     }
 }
