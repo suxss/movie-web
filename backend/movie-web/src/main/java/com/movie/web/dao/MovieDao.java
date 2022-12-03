@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MovieDao {
-    public Movie selectMovieByMovieId(String movieId){
+    public static Movie selectMovieByMovieId(String movieId){
         Movie movie = null;
         try {
             String sql = "SELECT mid id, mname, pic cover, imdb, type, content, director, actors, rate, rate_num, feature, one_star, two_star, three_star, four_star, five_star, s1_mid, s2_mid, s3_mid, s4_mid from movie where mid = ?";
@@ -23,7 +23,7 @@ public class MovieDao {
         return movie;
     }
 
-    public List<Movie> selectMovies(int start, int limit){
+    public static List<Movie> selectMovies(int start, int limit){
         List<Movie> moviesList = new ArrayList<Movie>(limit);
         try {
             String sql = "SELECT mid id, mname, pic cover, imdb, type, content, director, actors, rate, rate_num, feature, one_star, two_star, three_star, four_star, five_star, s1_mid, s2_mid, s3_mid, s4_mid FROM movie limit ?,? ";
@@ -35,7 +35,7 @@ public class MovieDao {
         return moviesList;
     }
 
-    public List<Movie> selectSimilarMovies(int start, int limit, String feature){
+    public static List<Movie> selectSimilarMovies(int start, int limit, String feature){
         List<Movie> moviesList = new ArrayList<Movie>(limit);
         try {
             String sql = "SELECT mid id, mname, pic cover, imdb, type, content, director, actors, rate, rate_num, feature, one_star, two_star, three_star, four_star, five_star, s1_mid, s2_mid, s3_mid, s4_mid FROM movie order by func_similarity(feature, ?) limit ?,?";
@@ -47,7 +47,7 @@ public class MovieDao {
         return moviesList;
     }
 
-    public List<Movie> searchMovies(int start, int limit, String keyword){
+    public static List<Movie> searchMovies(int start, int limit, String keyword){
         List<Movie> moviesList = new ArrayList<Movie>(limit);
         try {
             String sql = "SELECT mid id, mname, pic cover, type, content, director, actors, rate, rate_num, feature, one_star, two_star, three_star, four_star, five_star, s1_mid, s2_mid, s3_mid, s4_mid FROM movie where match(mname) against (? in boolean mode ) limit ?,?";

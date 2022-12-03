@@ -1,4 +1,6 @@
 web/preview/
 Feature-extraction/model/
 Feature-extraction/db_settings.py
-backend/venv
+backend/venv/
+/backend/movie-web/src/main/resources/data/
+*.bin
