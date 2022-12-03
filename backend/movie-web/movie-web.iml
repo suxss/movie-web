@@ -50,6 +50,18 @@
     <orderEntry type="library" exported="" scope="PROVIDED" name="Tomcat 10.0.16" level="application_server_libraries" />
     <orderEntry type="library" exported="" name="druid-1.2.8" level="project" />
     <orderEntry type="library" exported="" name="commons-dbutils-1.7" level="project" />
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../../../大二下/web/大作业/bookmall-ms/web/WEB-INF/lib/fastjson-1.2.48.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.6" level="project" />
     <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java:3.14.0" level="project" />
+    <orderEntry type="library" name="Maven: com.hankcs:hanlp:portable-1.8.3" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains:annotations:20.1.0" level="project" />
   </component>
 </module>
