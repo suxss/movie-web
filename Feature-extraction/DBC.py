@@ -7,7 +7,7 @@ class Connection:
                                  password=db_settings.password, db=db_settings.db)
 
     def getContents(self):
-        sql = "SELECT mid, content FROM movie"
+        sql = "select * from movie_web.movie where s1_mid is null  or  s2_mid is null  or s3_mid is null  or s4_mid is null;"
         try:
             with self.mysql_conn.cursor() as cursor:
                 cursor.execute(sql)

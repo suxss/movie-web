@@ -3,4 +3,7 @@ Feature-extraction/model/
 Feature-extraction/db_settings.py
 backend/venv/
 /backend/movie-web/src/main/resources/data/
+/backend/movie-web/target/
+/backend/movie-web/out/
 *.bin
+*.class

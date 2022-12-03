@@ -4,6 +4,8 @@ import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.pool.DruidDataSourceFactory;
 
 import javax.sql.DataSource;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -15,7 +17,9 @@ public class DruidUtils {
 
     static {
         try {
-            InputStream is = DruidUtils.class.getResourceAsStream("druid.properties");
+            String configPath = java.net.URLDecoder.decode(DruidUtils.class.getResource("").getPath(),"utf-8");
+            System.out.println(configPath.substring(1)+"druid.properties");
+            InputStream is = new FileInputStream(new File(configPath+"druid.properties"));
             Properties properties = new Properties();
             properties.load(is);
             druidDataSource = (DruidDataSource)
