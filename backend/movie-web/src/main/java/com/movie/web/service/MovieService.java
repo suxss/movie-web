@@ -2,6 +2,7 @@ package com.movie.web.service;
 
 import com.movie.web.dao.MovieDao;
 import com.movie.web.dto.Movie;
+import com.movie.web.plugins.cut.NLPCut;
 import com.movie.web.plugins.feature.FeatureAnalyse;
 import com.movie.web.plugins.filter.MovieFilter;
 import org.jetbrains.annotations.NotNull;
@@ -44,17 +45,23 @@ public class MovieService {
     }
 
     public static void main(String[] args) {
-        MovieFilter mf = new MovieFilter(10, 0.05);
-        float[] f = new float[128];
-        Arrays.fill(f, 0);
-        f[1] = 0.432f;
-        f[4] = 0.8361f;
-        String feature = FeatureAnalyse.array2Str(f);
-        List<Movie> movies = getMostSimilarMovies(feature, 10, mf);
-        System.out.println(movies.size());
+//        MovieFilter mf = new MovieFilter(10, 0.05);
+//        float[] f = new float[128];
+//        Arrays.fill(f, 0);
+//        f[1] = 0.432f;
+//        f[4] = 0.8361f;
+//        String feature = FeatureAnalyse.array2Str(f);
+//        List<Movie> movies = getMostSimilarMovies(feature, 10, mf);
+//        System.out.println(movies.size());
+//        for (Movie m : movies) {
+//            System.out.println(m.getMname());
+//            System.out.println(m.getSimilarity());
+//        }
+        String key = "戒指王";
+        List<Movie> movies = search(NLPCut.join(key, ""));
         for (Movie m : movies) {
             System.out.println(m.getMname());
-            System.out.println(m.getSimilarity());
+//            System.out.println(m.getSimilarity());
         }
     }
 }

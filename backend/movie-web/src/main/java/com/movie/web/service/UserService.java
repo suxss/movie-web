@@ -12,7 +12,7 @@ import java.util.Random;
 
 public class UserService {
     public static User checkLogin(String uname, String pwd) {
-        return UserDao.selectUserByNameAndId(uname, pwd);
+        return UserDao.selectUserByNameAndPwd(uname, pwd);
     }
 
     public static boolean isUniqueName(String uname) {
@@ -29,7 +29,7 @@ public class UserService {
     }
 
     private static String randomStr(int len) {
-        String s = "0123456789abcdefghijklmnoprstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", r = "";
+        String s = "0123456789abcdefg00hijklmnoprstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", r = "";
         Random random = new Random();
         int index;
         for (int i = 0; i < len; i++) {

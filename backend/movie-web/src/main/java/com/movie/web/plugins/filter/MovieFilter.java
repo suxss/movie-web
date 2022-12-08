@@ -24,7 +24,7 @@ public class MovieFilter {
         bloomFilter.addString(s);
     }
 
-    public boolean test(String s){
+    public boolean test(String s) {
         return bloomFilter.testString(s);
     }
 
@@ -32,5 +32,9 @@ public class MovieFilter {
         BloomFilterProtos.BloomFilter.Builder builder = BloomFilterProtos.BloomFilter.newBuilder();
         BloomFilterIO.serialize(builder, bloomFilter);
         builder.build().writeTo(new FileOutputStream(path));
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 }

@@ -7,10 +7,20 @@
       <excludeFolder url="file://$MODULE_DIR$/Feature-extraction/model" />
       <excludeFolder url="file://$MODULE_DIR$/venv" />
       <excludeFolder url="file://$MODULE_DIR$/backend/venv" />
-      <excludeFolder url="file://$MODULE_DIR$/.idea/dataSources" />
       <excludeFolder url="file://$MODULE_DIR$/backend/movie-web/src/main/resources/data" />
-      <excludeFolder url="file://$MODULE_DIR$/backend/movie-web/target" />
       <excludeFolder url="file://$MODULE_DIR$/backend/movie-web/out" />
+      <excludeFolder url="file://$MODULE_DIR$/.idea/dataSources" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/movie-web/target" />
+      <excludePattern pattern="web/preview/" />
+      <excludePattern pattern=" Feature-extraction/model/" />
+      <excludePattern pattern=" Feature-extraction/db_settings.py" />
+      <excludePattern pattern=" backend/venv/" />
+      <excludePattern pattern=" /backend/movie-web/src/main/resources/data/" />
+      <excludePattern pattern=" /backend/movie-web/target/" />
+      <excludePattern pattern=" /backend/movie-web/out/" />
+      <excludePattern pattern=" *.bin" />
+      <excludePattern pattern=" *.class" />
+      <excludePattern pattern="/backend/movie-web/target/*" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
