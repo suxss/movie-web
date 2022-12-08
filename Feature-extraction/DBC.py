@@ -40,7 +40,7 @@ class Connection:
             return None
 
     def updateSimilar(self, mid: str, smid1: str, smid2: str, smid3: str, smid4: str):
-        sql = f"UPDATE 综合项目.movie t SET t.s1_mid = '{smid1}', t.s2_mid = '{smid2}', t.s3_mid = '{smid3}', t.s4_mid = '{smid4}' WHERE t.mid LIKE '{mid}'"
+        sql = f"UPDATE movie t SET t.s1_mid = '{smid1}', t.s2_mid = '{smid2}', t.s3_mid = '{smid3}', t.s4_mid = '{smid4}' WHERE t.mid LIKE '{mid}'"
         try:
             with self.mysql_conn.cursor() as cursor:
                 cursor.execute(sql)

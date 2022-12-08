@@ -32,7 +32,7 @@ public class UserDao {
         return user;
     }
 
-    public static User selectUserByNameAndId(String uname, String pwd) {
+    public static User selectUserByNameAndPwd(String uname, String pwd) {
         User user = null;
         try {
             String sql = "select uid, uname, pwd, feature, visited_count from user where uname = ? and pwd = ?";
