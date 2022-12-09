@@ -189,6 +189,7 @@ function getData() {
     });
 }
 
+
 load = async function () {
     var data = await getData();
     var start_percent = loadInfo(data);

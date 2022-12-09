@@ -49,7 +49,7 @@ public class UserDao {
         try {
             String sql = "update user set feature = ?, visited_count = visited_count + 1 where uid = ?";
             QueryRunner queryRunner = new QueryRunner(DruidUtils.getDataSource());
-            r = queryRunner.update(sql, uid, feature);
+            r = queryRunner.update(sql, feature, uid);
         } catch (SQLException e) {
             e.printStackTrace();
         }

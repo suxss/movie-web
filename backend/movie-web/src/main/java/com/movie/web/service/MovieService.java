@@ -17,7 +17,7 @@ public class MovieService {
     }
 
     public static @NotNull List<Movie> getMostSimilarMovies(String feature, int len, MovieFilter mf) {
-        float[] f = FeatureAnalyse.str2Array(feature);
+//        float[] f = FeatureAnalyse.str2Array(feature);
         List<Movie> Movies = MovieDao.selectMovies(0, 9000);
         for (Movie m : Movies) {
             m.setSimilarity(FeatureAnalyse.similarity(feature, m.getFeature()));
@@ -61,7 +61,7 @@ public class MovieService {
         List<Movie> movies = search(NLPCut.join(key, ""));
         for (Movie m : movies) {
             System.out.println(m.getMname());
-//            System.out.println(m.getSimilarity());
+            System.out.println(m.getSimilarity());
         }
     }
 }

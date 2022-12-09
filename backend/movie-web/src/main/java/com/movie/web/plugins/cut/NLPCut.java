@@ -20,6 +20,7 @@ public class NLPCut {
             if (isStopWord(term.word)) continue;
             result += " " + seq + term.word;
         }
+        System.out.println(result);
         return result.substring(1);
     }
 

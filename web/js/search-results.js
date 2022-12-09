@@ -128,8 +128,11 @@ function addCard(data) {
 
 function getData(key) {
     return new Promise((resolve, reject) => {
-        fetch("./test/SrAddCard.json")
-            .then(response => response.json())
+        fetch("http://localhost:8080/movie_web/search", {
+            method: "post", body: "key=" + key, headers: {
+                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+            }
+        }).then(response => response.json())
             .then(data => {
                 console.log(data);
                 resolve(data);
