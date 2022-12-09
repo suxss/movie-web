@@ -85,13 +85,13 @@ var template1 = myparseHTMLTemplate(function () {
                                 </div>
                                 <div id="people">
                                     <div id="directors">
-                                        <p>导演：${director}</p>
+                                        <p>导演：${directors}</p>
                                     </div>
                                     <div id="actors">
                                         <p>主演：${actors}</p>
                                     </div>
                                     <div id="imdb">
-                                        <p>IMDb：${IMDb}</p>
+                                        <p>IMDb：${iMDb}</p>
                                     </div>
 
                                     <div id="echart" style="width: 600px;height:170px;"></div>
@@ -126,31 +126,31 @@ var template1 = myparseHTMLTemplate(function () {
 
     <div class="row mt-5 card-deck">
 
-        <div class="card" onClick="window.open('${r1-href}')">
-            <img class="card-img-top" src="${r1-cover}" alt="Card image cap">
+        <div class="card" onClick="window.open('info.html?mid=${r1-mid}')">
+            <img class="card-img-top" src="${r1-cover}" alt="Card image cap" referrerPolicy="no-referrer">
                 <div class="card-body">
                     <h4 class="card-title">${r1-title}</h4>
                 </div>
         </div>
 
-        <div class="card" onClick="window.open('${r2-href}')">
-            <img class="card-img-top" src="${r2-cover}" alt="Card image cap">
+        <div class="card" onClick="window.open('info.html?mid=${r2-mid}')">
+            <img class="card-img-top" src="${r2-cover}" alt="Card image cap" referrerPolicy="no-referrer">
                 <div class="card-body">
                     <h4 class="card-title">${r2-title}</h4>
                 </div>
         </div>
 
-        <div class="card" onClick="window.open('${r3-href}')">
-            <img class="card-img-top" src="${r3-cover}" alt="Card image cap">
+        <div class="card" onClick="window.open('info.html?mid=${r3-mid}')">
+            <img class="card-img-top" src="${r3-cover}" alt="Card image cap" referrerPolicy="no-referrer">
                 <div class="card-body">
                     <h4 class="card-title">${r3-title}</h4>
                 </div>
         </div>
 
-        <div class="card" onClick="window.open('${r3-href}')">
-            <img class="card-img-top" src="${r3-cover}" alt="Card image cap">
+        <div class="card" onClick="window.open('info.html?mid=${r4-mid}')">
+            <img class="card-img-top" src="${r4-cover}" alt="Card image cap" referrerPolicy="no-referrer">
                 <div class="card-body">
-                    <h4 class="card-title">${r3-title}</h4>
+                    <h4 class="card-title">${r4-title}</h4>
                 </div>
         </div>
 
@@ -161,7 +161,7 @@ var template1 = myparseHTMLTemplate(function () {
 function loadInfo(data) {
     var html = '';
     var item;
-    item = data['result'];
+    item = data['result'][0];
     rate = item['rate'];
     yellow = [0, 0, 0, 0, 0];
     for (var j = 0; j < 5; j++) {
@@ -169,6 +169,7 @@ function loadInfo(data) {
         item['yellow' + (j + 1)] = yellow[j].toString();
     }
     for (var j = 0; j < item['relative'].length; j++) {
+        item['r' + (j + 1) + '-mid'] = item['relative'][j]['mid'];
         item['r' + (j + 1) + '-cover'] = item['relative'][j]['cover'];
         item['r' + (j + 1) + '-title'] = item['relative'][j]['title'];
     }
@@ -178,10 +179,13 @@ function loadInfo(data) {
     return [item["five_star"], item["four_star"], item["three_star"], item["two_star"], item["one_star"]];
 }
 
-function getData() {
+function getData(id) {
     return new Promise((resolve, reject) => {
-        fetch("./test/info.json")
-            .then(response => response.json())
+        fetch("http://localhost:8080/movie_web/info", {
+            method: "post", body: "mid=" + id, headers: {
+                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+            }
+        }).then(response => response.json())
             .then(data => {
                 console.log(data);
                 resolve(data);
@@ -190,8 +194,8 @@ function getData() {
 }
 
 
-load = async function () {
-    var data = await getData();
+load = async function (mid) {
+    var data = await getData(mid);
     var start_percent = loadInfo(data);
     var myChart = echarts.init(document.getElementById('echart'));
     const labelRight = {
@@ -264,6 +268,14 @@ load = async function () {
 
 }
 
+function getUrlPara(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) return (r[2]);
+    return null;
+}
+
 $(function () {
-    load()
+    var mid = getUrlPara("mid")
+    load(mid)
 })

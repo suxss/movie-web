@@ -39,7 +39,7 @@ public class MovieDao {
     public static List<Movie> selectMovies(int start, int limit){
         List<Movie> moviesList = new ArrayList<Movie>(limit);
         try {
-            String sql = "SELECT mid id, mname, pic cover, imdb, type, content, director, actors, rate, rate_num, feature, one_star, two_star, three_star, four_star, five_star, s1_mid, s2_mid, s3_mid, s4_mid FROM movie limit ?,? ";
+            String sql = "SELECT mid id, mname, pic cover, imdb, type, content, director, actors, rate, rate_num, feature, one_star, two_star, three_star, four_star, five_star, s1_mid, s2_mid, s3_mid, s4_mid FROM movie order by rate_num DESC limit ?,? ";
             QueryRunner queryRunner = new QueryRunner(DruidUtils.getDataSource());
             moviesList = queryRunner.query(sql, new BeanListHandler<>(Movie.class),start,limit);
         } catch (SQLException e) {

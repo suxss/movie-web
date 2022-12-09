@@ -2,6 +2,7 @@ package com.movie.web.service;
 
 import com.alibaba.fastjson.JSON;
 import com.movie.web.dto.Movie;
+import com.movie.web.plugins.cut.NLPCut;
 import com.movie.web.plugins.filter.MovieFilter;
 import com.movie.web.service.jsonObjects.IndexCard;
 import com.movie.web.service.jsonObjects.MovieInfo;
@@ -12,7 +13,8 @@ import java.util.List;
 
 public class JSONService {
         public static String search(String key) {
-            List<Movie> search_result = MovieService.search(key);
+            String cut_key = NLPCut.join(key, "");
+            List<Movie> search_result = MovieService.search(cut_key);
             List<SearchCard> result = new ArrayList<>(search_result.size());
             for (Movie m :
                     search_result) {
@@ -34,18 +36,23 @@ public class JSONService {
 
         public static String getMostSimilarMovies(String feature, int len, MovieFilter mf) {
             List<Movie> movies = MovieService.getMostSimilarMovies(feature, len, mf);
+            for (Movie m : movies) {
+                System.out.println(m.getMname());
+                System.out.println(m.getSimilarity());
+            }
             List<IndexCard> result = new ArrayList<>(movies.size());
             IndexResult ir = new IndexResult();
             for (Movie m :
                     movies) {
                 result.add(new IndexCard(m));
+                mf.add(m.getId());
             }
             ir.setResult(result);
             return JSON.toJSONString(ir);
         }
 
     public static void main(String[] args) {
-        String r = search("肖申克");
+        String r = search("肖申克的拯救");
         System.out.println(r);
     }
 

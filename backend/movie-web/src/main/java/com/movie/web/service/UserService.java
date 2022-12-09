@@ -20,11 +20,13 @@ public class UserService {
     }
 
     public static int record(String uid, String mid) {
+        System.out.println(uid + " + " + mid);
         Movie movie = MovieDao.selectMovieByMovieId(mid);
         User user = UserDao.selectUserById(uid);
         String m_feature = movie.getFeature(), u_feature = user.getFeature();
         int n = user.getVisited_count();
-        u_feature = FeatureAnalyse.addFeature(m_feature, u_feature, ((float) n) / ((float) n + 1), ((float) 1) / ((float) n + 1));
+        u_feature = FeatureAnalyse.addFeature(m_feature, u_feature, ((float) 1) / ((float) n + 1), ((float) n) / ((float) n + 1));
+//        System.out.println(uid+"\n"+u_feature);
         return UserDao.updateVisitHistory(uid, u_feature);
     }
 
@@ -46,5 +48,16 @@ public class UserService {
         Arrays.fill(feature, 0f);
         String feature_str = FeatureAnalyse.array2Str(feature);
         return UserDao.insertUser(uid, uname, pwd_encrypted, feature_str);
+    }
+
+    public static User defaultUser() {
+        return UserDao.selectUserById("tdgf9rLQMbTeVrh");
+    }
+
+    public static void main(String[] args) {
+//        UserService.createUser(".Default", "none");
+//        UserService.createUser("测试用户1", "123");
+        Movie movie = MovieDao.selectMovieByMovieId("1292052");
+        System.out.println(movie.getId());
     }
 }

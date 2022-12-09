@@ -23,7 +23,8 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // TODO 登录
+        response.setContentType("application/json;charset=utf-8");
+        response.setCharacterEncoding("utf-8");
         String username = request.getParameter("username");
         String pwd = request.getParameter("password");
         User u = UserService.checkLogin(username, pwd);
@@ -32,7 +33,8 @@ public class LoginServlet extends HttpServlet {
         int e = 1;
         if (u != null) {
             session.setAttribute("user", u);
-            MovieFilter movieFilter = new MovieFilter("BloomFilter_" + u.getUid());
+            MovieFilter movieFilter = new MovieFilter(4000, 0.05);
+            movieFilter.setPath("BloomFilter_" + u.getUid());
             session.setAttribute("bf", movieFilter);
             msg = "登陆成功";
             e = 0;
