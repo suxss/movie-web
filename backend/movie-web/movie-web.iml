@@ -59,9 +59,9 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.6" level="project" />
-    <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java:3.14.0" level="project" />
+    <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.15" level="project" />
+    <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java:3.21.9" level="project" />
     <orderEntry type="library" name="Maven: com.hankcs:hanlp:portable-1.8.3" level="project" />
-    <orderEntry type="library" name="Maven: org.jetbrains:annotations:20.1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains:annotations:23.0.0" level="project" />
   </component>
 </module>

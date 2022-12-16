@@ -101,7 +101,7 @@ function infinityScroll(footerNode, callback) {
 
 function getData() {
     return new Promise((resolve, reject) => {
-        fetch("http://localhost:8080/movie_web/movielist", {
+        fetch("movielist", {
             method: "post", headers: {
                 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
             }
