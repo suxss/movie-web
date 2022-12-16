@@ -18,7 +18,7 @@ function max(a, b) {
 }
 
 var template01 = myparseHTMLTemplate(function () {
-    /* <div class="row card-deck" onclick="window.open('${href}')">
+    /* <div class="row card-deck" onclick="window.open('info.html?mid=${mid}')">
 <div class="col">
     <div class="card box-shadow mb-8">
         <div class="row no-gutters">
@@ -89,20 +89,6 @@ var template01 = myparseHTMLTemplate(function () {
     */
 });
 
-var data1 = {
-    'title': 'this is a title',
-    'cover': 'https://img2.doubanio.com/view/photo/s_ratio_poster/public/p480747492.jpg',
-    'directors': '王秋阳',
-    'actors': '秋阳',
-    'yellow1': '100',
-    'yellow2': '100',
-    'yellow3': '100',
-    'yellow4': '50',
-    'yellow5': '0',
-    'type': '喜剧',
-};
-var newHtml = template01(data1);
-
 // console.log(newHtml)
 
 function addCard(data) {
@@ -145,5 +131,15 @@ async function load(key) {
     addCard(data);
 }
 
+function getUrlPara(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) return (r[2]);
+    return null;
+}
+
+$(function () {
+    load(getUrlPara("key"))
+})
 
 

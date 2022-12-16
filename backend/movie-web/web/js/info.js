@@ -174,7 +174,7 @@ function loadInfo(data) {
         item['r' + (j + 1) + '-title'] = item['relative'][j]['title'];
     }
     html += template1(item);
-
+    $("title").html(item["title"] + "-电影详情");
     $('#info').append(html);
     return [item["five_star"], item["four_star"], item["three_star"], item["two_star"], item["one_star"]];
 }
