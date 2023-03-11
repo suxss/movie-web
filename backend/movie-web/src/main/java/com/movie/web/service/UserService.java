@@ -57,7 +57,12 @@ public class UserService {
     public static void main(String[] args) {
 //        UserService.createUser(".Default", "none");
 //        UserService.createUser("测试用户1", "123");
-        Movie movie = MovieDao.selectMovieByMovieId("1292052");
-        System.out.println(movie.getId());
+//        Movie movie = MovieDao.selectMovieByMovieId("1292052");
+
+        UserService.createUser("xss", "12345");
+        UserService.createUser("test2", "123");
+
+//        User u = UserDao.selectUserById("tdgf9rLQMbTeVrh");
+//        System.out.println(u.getUname());
     }
 }

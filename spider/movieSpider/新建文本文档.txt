@@ -1,0 +1,4 @@
+scrapy runspider tmbdSpider.py -s JOBDIR=jobs/id/01
+
+scrapy runspider doubanIdSpider.py -s JOBDIR=jobs/doubanId/01
+
