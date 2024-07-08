@@ -5,5 +5,11 @@ backend/venv/
 /backend/movie-web/src/main/resources/data/
 /backend/movie-web/target/
 /backend/movie-web/out/
+/model/backend.out
+/model/src.main.resources.data/
+/model/target.classes.resources.data/
+/model/bin/
+*.model
+*.npy
 *.bin
 *.class
